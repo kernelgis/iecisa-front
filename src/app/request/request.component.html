@@ -1,0 +1,114 @@
+<section>
+
+  <!-- Page content -->
+<div class="container mt--8 pb-5">
+  <!-- Table -->
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card bg-light shadow border-0">
+        <div class="card-header bg-transparent pb-4">
+          <div class="text-orange text-center mt-2 mb-4"><h4> Registro de solicitud </h4></div>
+        
+
+        <div class="text-center">
+          <a href="javascript:void(0)" class="btn btn-neutral btn-icon mr-4">
+            <span class="btn-inner--icon"><img src="../../assets/Iecisa_gfi.png" width="100" height="65" alt="iecisa"></span>
+            
+          </a>
+          <!-- <a href="javascript:void(0)" class="btn btn-neutral btn-icon">
+            <span class="btn-inner--icon"><img src="../../assets/osiptel_logo.png" width="130" height="40" alt="osiptel"></span>
+            
+          </a> -->
+        </div>
+      </div>
+
+        <div class="card-body px-lg-5 py-lg-4">
+          <div class="text-center text-muted mb-3">
+            <small>Ingrese los siguientes datos</small>
+          </div>
+          <form [formGroup]="formRequest" (ngSubmit)="onSubmit(formRequest)" >
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class='fa fa-user-circle'  aria-hidden='true'></i></span>
+                </div>
+                <input class="form-control" placeholder="Nombres" type="text" formControlName="nombre">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class='fa fa-user-circle'  aria-hidden='true'></i></span>
+                </div>
+                <input class="form-control" placeholder="Apellidos" type="text" formControlName="apellidos">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-phone fa-lg" aria-hidden='true'></i></span>
+                </div>
+                <input class="form-control" placeholder="Número de celular a portar" type="text" required formControlName="celular">
+                <div *ngIf="formRequest.get('celular').errors && formRequest.get('celular').touched">
+                  <div *ngIf="formRequest.get('celular').hasError('required')" class="invalid-feedback">No olvide llenar este campo</div>
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" for="inputGroupSelect01"><i class="fa fa-paper-plane-o fa-xs"></i></span>
+              </div>
+              <select class="custom-select" id="inputGroupSelect01" formControlName="dniType">
+                <!-- <option selected>Seleccione tipo de DNI...</option> -->
+                <option selected value="9">DNI Azul</option>
+                <option value="10">DNI Electrónico</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-envelope-o fa-xs"></i></span>
+                </div>
+                <input class="form-control" placeholder="Correo Electronico" type="email" required formControlName="email">
+                <div *ngIf="formRequest.get('email').errors && formRequest.get('email').touched">
+                  <div *ngIf="formRequest.get('email').hasError('required')" class="invalid-feedback">No olvide llenar este campo</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" for="inputGroupSelect01"><i class="fa fa-paper-plane-o fa-xs"></i></span>
+              </div>
+              <select class="custom-select" formControlName="notificationType">
+                <option value="0">Seleccione como desea ser notificado...</option>
+                <option value="1">Celular</option>
+                <option value="2">Correo Electronico</option>
+              </select>
+            </div>
+
+            <div class="form-group text-center">
+              <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" formControlName="accept">
+              <label class="form-check-label" for="defaultCheck1"> Acepto las condiciones de uso y del servicio </label>
+
+              <div *ngIf="formRequest.get('accept').errors && formRequest.get('accept').touched">
+                <div *ngIf="formRequest.get('accept').hasError('required')" class="invalid-feedback">No olvide llenar este campo</div>
+              </div>
+
+            </div>
+
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn-secondary mt-2" role="button" [disabled]="formRequest.invalid"> 
+                Validar Identidad
+              </button>
+              <!-- <a href="validation" class="btn btn-secondary mt-2" role="button" aria-pressed="true" type='submit'>Validar Identidad</a> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
